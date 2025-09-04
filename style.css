@@ -19,30 +19,32 @@ body{
   overflow:hidden;
 }
 
-/* Orientation gate */
-.gate{
+.hidden{ display:none !important; }
+
+/* Orientation lock */
+#orientation-lock{
   position:fixed; inset:0; display:flex; align-items:center; justify-content:center;
   background: radial-gradient(1200px 800px at 50% 0%, rgba(199,125,255,.2), transparent 60%),
               linear-gradient(180deg, var(--violet-1), var(--violet-2));
   z-index:1000;
 }
-.gate.hidden{ display:none }
-.gate .card{
+#orientation-lock .card{
   width:min(90vw,520px); text-align:center; padding:28px 24px; border-radius:16px;
   background: rgba(255,255,255,.06); backdrop-filter: blur(8px); box-shadow: var(--shadow);
 }
-.gate .phone{
+#orientation-lock .phone{
   margin:0 auto 16px; width:56px; height:92px; border-radius:14px; border:3px solid #fff2; position:relative;
 }
-.gate .phone::before{
+#orientation-lock .phone::before{
   content:""; position:absolute; inset:8px; border-radius:10px; background: linear-gradient(180deg,#2a155e,#0b0720);
 }
-.gate h2{margin:8px 0 6px; font-weight:800}
-.gate p{margin:0 0 14px; opacity:.85}
-.gate button{
+#orientation-lock h2{margin:8px 0 6px; font-weight:800}
+#orientation-lock p{margin:0 0 10px; opacity:.85}
+#orientation-lock button{
   border:0; border-radius:12px; padding:12px 16px; background:#ffffff14; color:#fff; font-weight:700;
   cursor:pointer;
 }
+#orientation-lock #hint{ margin-top:10px; font-size:14px; opacity:.8; min-height:1.2em; }
 
 /* Music icon */
 #musicToggle{
@@ -55,6 +57,7 @@ body{
 
 /* Countdown */
 #countdown{ position:fixed; inset:0; display:grid; place-items:center; z-index:800; }
+#countdown .wrap{ position:relative; width:100%; height:100%; display:grid; place-items:center; }
 #countdown .num{ font-size: clamp(48px, 14vw, 120px); font-weight:800; color:#fff; text-shadow:0 8px 24px rgba(0,0,0,.5); }
 #countdown .dot{ position:absolute; width:10px; height:10px; border-radius:50%; background:#fff8; top:20%; left:50%; transform:translateX(-50%); animation:fall 3s linear forwards; }
 @keyframes fall{ to{ top:80%; opacity:0 } }
@@ -87,34 +90,38 @@ body{
   100%{ opacity:1; transform: translateY(0) scale(1) rotate(0deg); }
 }
 
-/* Heart (safe CSS) */
+/* Heart */
 #heart{
   position:fixed; inset:0; display:grid; place-items:center; z-index:220; pointer-events:none;
   opacity:0;
 }
-#heart .h{
-  width:min(36vmin,320px); aspect-ratio:1/1; position:relative;
-  transform: rotate(-45deg) scale(0.001);
-  background: radial-gradient(circle at 30% 30%, #ff8fa3, #ff4d6d 70%);
-  border-radius: 20% 0 0 20%;
+#heart::before{
+  content:"";
+  width:min(38vmin,380px); height:min(34vmin,340px);
+  background:
+    radial-gradient(circle at 30% 35%, #ff6b6b, transparent 60%),
+    radial-gradient(circle at 70% 35%, #ff6b6b, transparent 60%),
+    conic-gradient(from 45deg at 50% 60%, #ff4d6d, #ff1e56 40%, #ff4d6d 80%, #ff4d6d);
+  -webkit-clip-path: path('M0.5,0.3 C0.5,0.15 0.6,0.0 0.75,0.0 C0.95,0.0 1.0,0.2 1.0,0.35 C1.0,0.6 0.8,0.8 0.5,1.0 C0.2,0.8 0.0,0.6 0.0,0.35 C0.0,0.2 0.05,0.0 0.25,0.0 C0.4,0.0 0.5,0.15 0.5,0.3Z');
+  clip-path: path('M0.5,0.3 C0.5,0.15 0.6,0.0 0.75,0.0 C0.95,0.0 1.0,0.2 1.0,0.35 C1.0,0.6 0.8,0.8 0.5,1.0 C0.2,0.8 0.0,0.6 0.0,0.35 C0.0,0.2 0.05,0.0 0.25,0.0 C0.4,0.0 0.5,0.15 0.5,0.3Z');
+  transform: scale(0.001);
+  display:block;
+  aspect-ratio:1/1;
 }
-#heart .h::before, #heart .h::after{
-  content:""; position:absolute; width:100%; height:100%; background: inherit; border-radius:50%;
+#heart.show{ animation: heartIn 1.3s cubic-bezier(.2,.8,.2,1) forwards; opacity:1; }
+@keyframes heartIn{
+  0%{ opacity:0; }
+  40%{ opacity:1; }
+  60%{ opacity:1; }
+  100%{ opacity:0; }
 }
-#heart .h::before{ top:-50%; left:0; }
-#heart .h::after{ left:50%; top:0; }
-#heart.show{ animation: heartFade 1.3s ease forwards; opacity:1; }
-#heart.show .h{ animation: heartPulse 1.2s ease forwards; }
-@keyframes heartPulse{
-  0%{ transform: rotate(-45deg) scale(0.001); }
-  50%{ transform: rotate(-45deg) scale(1.05); }
-  100%{ transform: rotate(-45deg) scale(1.6); }
+#heart.show::before{
+  animation: pulse 1.2s ease-in-out 0.1s forwards;
 }
-@keyframes heartFade{
-  0%{ opacity:0 }
-  40%{ opacity:1 }
-  80%{ opacity:1 }
-  100%{ opacity:0 }
+@keyframes pulse{
+  0%{ transform: scale(0.001); }
+  50%{ transform: scale(1.05); }
+  100%{ transform: scale(1.6); }
 }
 
 /* Starfield */
@@ -124,7 +131,11 @@ body{
 #book{
   position:fixed; inset:0; display:flex; align-items:center; justify-content:center; z-index:60;
 }
-.book{ width:min(92vw, 900px); height:min(70vh, 560px); perspective: 2000px; display:flex; gap:2px; }
+.book{
+  width:min(92vw, 900px); height:min(70vh, 560px);
+  perspective: 2000px;
+  display:flex; gap:2px;
+}
 .page{
   position:relative; width:50%; height:100%;
   background:linear-gradient(180deg, #0f0a1f, #1a1033);
@@ -133,10 +144,13 @@ body{
   transition: transform 0.8s ease, box-shadow .3s ease;
   box-shadow: 0 6px 24px rgba(0,0,0,.45);
 }
-.page .inner{ position:absolute; inset:0; padding:22px; display:flex; flex-direction:column; gap:14px; }
+.page .inner{
+  position:absolute; inset:0; padding:22px; display:flex; flex-direction:column; gap:14px;
+}
 .page img{ width:100%; height:60%; object-fit:cover; border-radius:10px; }
 .page h3{ margin:0; font-size:clamp(18px, 2.4vw, 28px) }
 .page p{ margin:0; opacity:.9; font-size:clamp(14px, 1.8vw, 18px) }
+
 .page.flipped{ transform: rotateY(-180deg); }
 .page::after{
   content:""; position:absolute; inset:0; background: linear-gradient(90deg, rgba(255,255,255,.06), transparent 30%, transparent 70%, rgba(0,0,0,.3));
@@ -149,5 +163,5 @@ body{
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce){
   #phrase .letter{ animation:none; opacity:1 }
-  #heart.show .h{ animation:none; transform: rotate(-45deg) scale(1) }
+  #heart.show::before{ animation:none; transform: scale(1) }
 }

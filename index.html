@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
   <title>Happy Birthday</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,43 +11,44 @@
 </head>
 <body>
   <!-- Orientation gate -->
-  <div id="orientation-lock" class="gate">
+  <div id="orientation-lock">
     <div class="card">
       <div class="phone"></div>
-      <h2>Поверни телефон вертикально</h2>
-      <p>Держи экран <strong>вертикально</strong>, затем коснись, чтобы начать.</p>
+      <h2>Поставьте телефон вертикально</h2>
+      <p>Сканируйте QR, держите экран <strong>вертикально</strong>, затем коснитесь, чтобы начать.</p>
       <button id="startBtn" type="button">Начать</button>
+      <div id="hint" aria-live="polite"></div>
     </div>
   </div>
 
-  <!-- Music icon -->
+  <!-- Music icon (single control) -->
   <button id="musicToggle" aria-label="Музыка" title="Музыка">
     <span class="icon">♪</span>
   </button>
-  <audio id="bgm" preload="auto" playsinline src="music/happy-birthday.mp3"></audio>
+  <audio id="bgm" preload="auto" src="music/happy-birthday.mp3"></audio>
 
-  <!-- Countdown overlay -->
-  <div id="countdown" hidden>
-    <div class="dot"></div>
-    <div class="num">3</div>
+  <!-- Countdown -->
+  <div id="countdown" class="hidden">
+    <div class="wrap">
+      <div class="dot"></div>
+      <div class="num">3</div>
+    </div>
   </div>
 
-  <!-- Matrix rain background during intro -->
+  <!-- Intro background -->
   <canvas id="matrix"></canvas>
 
-  <!-- Phrase container -->
-  <div id="phrase" aria-hidden="true"></div>
+  <!-- Phrase -->
+  <div id="phrase"></div>
 
-  <!-- Heart (safe CSS version) -->
-  <div id="heart" aria-hidden="true"><div class="h"></div></div>
+  <!-- Heart -->
+  <div id="heart"></div>
 
-  <!-- Transition to starfield -->
-  <canvas id="starfield" hidden></canvas>
+  <!-- Starfield + Book -->
+  <canvas id="starfield" class="hidden"></canvas>
+  <section id="book" class="hidden" aria-label="Книга с поздравлением"></section>
 
-  <!-- Book -->
-  <section id="book" hidden aria-label="Книга с поздравлением"></section>
-
-  <!-- Confetti canvas (over everything) -->
+  <!-- Confetti -->
   <canvas id="confetti"></canvas>
 
   <script src="script.js" defer></script>
