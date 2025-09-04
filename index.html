@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Happy Birthday</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Orientation gate -->
+  <div id="orientation-lock" class="gate">
+    <div class="card">
+      <div class="phone"></div>
+      <h2>Поверни телефон вертикально</h2>
+      <p>Держи экран <strong>вертикально</strong>, затем коснись, чтобы начать.</p>
+      <button id="startBtn" type="button">Начать</button>
+    </div>
+  </div>
+
+  <!-- Music icon -->
+  <button id="musicToggle" aria-label="Музыка" title="Музыка">
+    <span class="icon">♪</span>
+  </button>
+  <audio id="bgm" preload="auto" playsinline src="music/happy-birthday.mp3"></audio>
+
+  <!-- Countdown overlay -->
+  <div id="countdown" hidden>
+    <div class="dot"></div>
+    <div class="num">3</div>
+  </div>
+
+  <!-- Matrix rain background during intro -->
+  <canvas id="matrix"></canvas>
+
+  <!-- Phrase container -->
+  <div id="phrase" aria-hidden="true"></div>
+
+  <!-- Heart (safe CSS version) -->
+  <div id="heart" aria-hidden="true"><div class="h"></div></div>
+
+  <!-- Transition to starfield -->
+  <canvas id="starfield" hidden></canvas>
+
+  <!-- Book -->
+  <section id="book" hidden aria-label="Книга с поздравлением"></section>
+
+  <!-- Confetti canvas (over everything) -->
+  <canvas id="confetti"></canvas>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
