@@ -35,7 +35,23 @@ finishCreation();
 
   // Bắt đầu website
   if (typeof startWebsite === "function") {
-    startWebsite();
+    startWebsite(); {
+    console.log("🚀 Starting website...");
+
+    this.resetWebsiteState();
+
+    const settings = window.settings || this.defaultSettings;
+    this.applyLoadedSettings(settings);
+
+    // 🎉 Добавь запуск таймера отсчёта
+    if (settings.countdown && settings.countdown > 0) {
+        this.startCountdown(settings.countdown);
+    } else {
+        // Если таймера нет — сразу идём дальше
+        this.startSequence();
+    }
+}
+
   }
 }
 
