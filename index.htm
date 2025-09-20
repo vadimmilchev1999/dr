@@ -78,12 +78,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const startMusic = () => {
       music.play().catch(err => console.log("Autoplay blocked:", err));
       document.removeEventListener("click", startMusic);
-      document.removeEventListener("touchstart", startMusic);
+      document.removeEventListener("touchend", startMusic);
       document.removeEventListener("keydown", startMusic);
     };
 
     document.addEventListener("click", startMusic);
-    document.addEventListener("touchstart", startMusic);
+    document.addEventListener("touchend", startMusic);
     document.addEventListener("keydown", startMusic);
   });
 </script>
