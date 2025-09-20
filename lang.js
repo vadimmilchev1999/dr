@@ -1,6 +1,6 @@
 const translations = {
   vi: {
-    title: "Chúc Mừng Sinh Nhật! 🎉",
+    title: "Матурым Динара! 🎉",
     description:
       "Một lời chúc sinh nhật đặc biệt dành cho bạn! Hãy khám phá món quà ý nghĩa này!",
     login: "Đăng nhập bằng Google",
