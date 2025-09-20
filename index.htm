@@ -47,7 +47,26 @@
     />
     <script src="firebasejs/8.10.1/firebase-app.js"></script>
     <script src="firebasejs/8.10.1/firebase-auth.js"></script>
-  </head>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const fullscreenBtn = document.getElementById("fullscreenBtn");
+
+  if (fullscreenBtn) {
+    fullscreenBtn.addEventListener("click", () => {
+      const elem = document.documentElement;
+
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen(); // Safari
+      } else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen(); // IE/Edge
+      }
+    });
+  }
+});
+</script>  
+</head>
 
   <body>
     <canvas id="matrix-rain" style="display: none"></canvas>
