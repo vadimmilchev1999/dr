@@ -11,7 +11,7 @@ let settings = {
   matrixColor2: "#ff1493", // Màu pink mẫu
   sequence: "HAPPY|BIRTHDAY|LITTLE|PRINCESS|❤",
   sequenceColor: "#ff69b4", // Màu pink mẫu
-  gift: "./gif/Cat Love GIF by KIKI.gif",
+  gift: "./gif/CatKIKI.gif",
   pages: [3],
   enableBook: true,
   enableHeart: true,
@@ -47,7 +47,7 @@ const musicOptions = [
 const gifOptions = [
   { value: "", label: "None" },
   { value: "./gif/happy.gif", label: "Gif1" },
-  { value: "./gif/Cat Love GIF by KIKI.gif", label: "Gif2" },
+  { value: "./gif/CatKIKI.gif", label: "Gif2" },
   { value: "./gif/Happy-Birthday-GIF-by-BREAD-TR-unscreen.gif", label: "Gif3" },
   { value: "./gif/happy2.gif", label: "Gif4" },
   { value: "./gif/happy3.gif", label: "Gif5" },
@@ -206,7 +206,7 @@ function initializeDefaultSettings() {
     matrixColor2: "#ff1493", //
     sequence: "ТУГАН|КӨНЕҢ|БЕЛӘН|ҖАНЫМ|❤",
     sequenceColor: "#ff69b4", //
-    gift: "../gif/Cat Love GIF by KIKI.gif",
+    gift: "../gif/CatKIKI.gif",
     enableBook: true,
     enableHeart: true,
     isSave: true,
