@@ -204,7 +204,7 @@ function initializeDefaultSettings() {
     matrixText: "HAPPYBIRTHDAY",
     matrixColor1: "#ff69b4", //
     matrixColor2: "#ff1493", //
-    sequence: "ТУГАН|КӨНЕҢ|БЕЛӘН|ҖАНЫМ|❤",
+    sequence: "HAPPY|BIRTHDAY|LITTLE|PRINCESS|❤",
     sequenceColor: "#ff69b4", //
     gift: "./gif/catlove.gif",
     enableBook: true,
@@ -213,39 +213,43 @@ function initializeDefaultSettings() {
     colorTheme: "pink",
     pages: [
       {
+        content: "«набираться культуры»",
         image: "./image/page1.jpg",
-        content: "Бу көнне сиңа телим: “мәдәният тупларга”",
       },
       {
         image: "./image/page2.jpg",
         content:
-          "Сиңа телим: алдагы көннәрдә дә үз яхшылыгың белән әйләнә-тирәне яктыртырга дәвам итүеңне",
+          "В этот день желаю тебе и дальше продолжать освещать вокруг всё своей добротой",
       },
       {
         image: "./image/page3.jpg",
-        content: "Тормышың буе шулай матур булып калуыңны телим ❤",
+        content:
+          "В этот день желаю оставаться такой же красивой всю свою жизнь ❤",
       },
-      { image: "./image/page4.jpg", content: "Кәеф гел күтәренке булсын!" },
+      {
+        image: "./image/page4.jpg",
+        content: "Пусть настроение всегда будет на высоте!",
+      },
       {
         image: "./image/page5.jpg",
-        content: "Гомерең шатлык-куанычлар, могҗизалар белән тулсын!",
+        content: "Пусть жизнь будет наполнена радостью, счастьем и чудесами!",
       },
       {
         image: "./image/page6.jpg",
-        content: "Сәламәтлегең беркайчан да начарланмасын!",
+        content: "Пусть твое здоровье держит любые удары ковида и его друзей!",
       },
       {
         image: "./image/page7.jpg",
-        content: "Күңелеңдә һәрвакыт җылы булсын!",
+        content:
+          "Пусть в душе всегда будет та самая теплота, что покоряет сердца людей вокруг тебя    ฅ^•ﻌ•^ฅ",
       },
       {
         image: "./image/page8.jpg",
-        content: "Күзләрең һәрвакыт елмаеп торсын!",
+        content: "Пусть твои глаза всегда улыбаются!",
       },
       {
         image: "./image/page9.jpg",
-        content:
-          "Күзләрең һәрвакыт елмаеп торсын, туган көнең белән, принцесса Динара!",
+        content: "Пусть твои глаза всегда улыбаются, принцесса Динара :)",
       },
     ],
   };
@@ -453,7 +457,7 @@ function populateModal() {
                 align-items: center;
                 width: 150px;
                 height: 150px;
-                background-color: #f0f0f0;
+                background-color: #f0f0f0ff;
                 font-size: 14px;
                 color: #999;
                 text-align: center;
@@ -975,7 +979,7 @@ function createPages() {
       endImg.src = "./image/theend.jpg";
       endImg.onerror = function () {
         back.classList.add("empty-page");
-        back.textContent = t("endOfBook");
+        back.textContent = t("Красота");
       };
       back.appendChild(endImg);
     }

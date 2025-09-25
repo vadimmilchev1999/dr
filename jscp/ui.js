@@ -1215,14 +1215,14 @@ function createHeartPhotoCentered(idx, total) {
   photo.style.top = centerY + "px";
   photo.style.opacity = "0";
   photo.style.transform = "translate(-50%, -50%) scale(0)";
-  photo.style.transition = "all 1.5s ease-out"; // Giảm thời gian transition
+  photo.style.transition = "all 2.5s ease-out"; // Giảm thời gian transition
 
   document.body.appendChild(photo);
   heartPhotosCreated++;
 
   // Sử dụng requestAnimationFrame cho smooth animation
   requestAnimationFrame(() => {
-    photo.style.opacity = "1";
+    photo.style.opacity = "2";
     photo.style.transform = "translate(-50%, -50%) scale(1)";
     photo.style.left = centerX + targetX + "px";
     photo.style.top = centerY + targetY + "px";
